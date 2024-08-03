@@ -22,7 +22,24 @@ Route::middleware('auth')->group(function () {
 
 //routes regarding placement admin
 
+//route to view the admin dashboard
+Route::get('/admin/dashboard', [ placementController::class, 'showDashBoard'])->middleware('auth') -> name('admin.dashboard');
 
-Route::get('/admin/dashboard', [ placementController::class, 'show'])->middleware('auth') -> name('admin.dashboard');
+
+//route to show new company form
+Route::get('admin/newcompany', [placementController::class, 'showNewForm'])->middleware('auth')->name('admin.newcompany');
+
+
+//route to get data from newcompanyForm and store it
+Route::post('admin/newcompany', [placementController::class, 'storeNewCompany']) -> middleware('auth') -> name('admin.newcompanyStore');
+
+
+
+
+
+
+
+
+
 
 require __DIR__.'/auth.php';

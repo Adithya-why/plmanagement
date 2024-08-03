@@ -9,7 +9,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
 </head>
-<body>
+<bod class=" w-full">
+
+    {{-- to display flash messages if available --}}
+    @if (session('message'))
+
+        <div class="flash">
+            {{ session('message') }}
+        </div>
+        
+    @endif
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <!-- Primary layout for all view rendered -->
 
