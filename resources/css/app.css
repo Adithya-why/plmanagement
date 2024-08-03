@@ -4,9 +4,12 @@
 
 
 
-html,body{
+html{
     width: 100vw;
-    
+}
+
+body{
+    width: 100%;
 }
 
 

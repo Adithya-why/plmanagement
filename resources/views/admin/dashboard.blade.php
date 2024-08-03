@@ -11,7 +11,7 @@
             <li class=" bg-cyan-800 w-1/3 h-1/2 text-center">
                 <div class="text-2xl">{{$company->name}}</div>
                 <div>{{$company->position}}</div>
-                <a href="{{ route('admin.showRegistered' , ['id' => $company->id]) }}"><button class=" bg-lime-600 p-1">See registered student</button></a>
+                <a href="{{ route('admin.showRegistered' , ['id' => $company->id]) }}"><button class=" bg-lime-600 p-1">See registered students</button></a>
                 
             </li>
         @endforeach
