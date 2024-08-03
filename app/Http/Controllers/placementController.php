@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Registration;
+use App\Models\Student;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
 
 //controller for the admin user
 //to add companies, view registered students and stuff
@@ -53,14 +54,25 @@ class placementController extends Controller
 
     }
 
+
+    //to show students registered for a given company with id
     public function showRegistered(string $id){
+        
 
-        $registered = Registration::where('companyid', $id)->get();
+        //selects the registrations for company with id first
+        //joins those rows using student id to get details of students registered
+        $registeredStudents = DB::table('registrations')
+                              -> where('registrations.companyid', '=', $id)
+                              -> join('students', 'registrations.studentid', '=', 'students.id')
+                              -> get();
 
-        // dd($registered);
+
+        
+
+        
 
         return view('admin.showRegistered', [
-            'registered' => $registered,
+            'registeredStudents' => $registeredStudents,
         ]);
     }
 }

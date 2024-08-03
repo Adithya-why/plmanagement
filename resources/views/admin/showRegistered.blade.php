@@ -1,13 +1,16 @@
 <x-layout>
 
-    <h1>Registered Students</h1>
+    <h1 class="text-3xl font-bold">Registered Students</h1>
+    {{-- if registered students exist, then show their details --}}
 
-
-    @if (!$registered->isEmpty())
+    @if (!$registeredStudents->isEmpty())
         
-        <ul>
-            @foreach ($registered as $student)
+        <ul class="flex gap-4 p-4">
+            @foreach ($registeredStudents as $student)
                 <li>{{ $student->studentid }}</li>
+                <li>{{ $student->deptno }}</li>
+                <li>{{ $student->department }}</li>
+                <li>{{ $student->cgpa }}</li>
             @endforeach
         </ul>
 
