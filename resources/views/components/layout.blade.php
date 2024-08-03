@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css">
 
 </head>
-<bod class=" w-full">
+<body class=" w-full">
 
     {{-- to display flash messages if available --}}
     @if (session('message'))

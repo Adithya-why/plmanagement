@@ -34,6 +34,10 @@ Route::get('admin/newcompany', [placementController::class, 'showNewForm'])->mid
 Route::post('admin/newcompany', [placementController::class, 'storeNewCompany']) -> middleware('auth') -> name('admin.newcompanyStore');
 
 
+//route to get all people registered for a given company id
+Route::get('admin/registered/{id}', [placementController::class, 'showRegistered']) -> middleware('auth') -> name('admin.showRegistered');
+
+
 
 
 

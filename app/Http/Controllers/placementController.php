@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
-
+use App\Models\Registration;
 use Illuminate\Http\Request;
 
 
@@ -51,5 +51,16 @@ class placementController extends Controller
         //flash message
         return redirect()->route('admin.dashboard')->with('message', 'New Company added');
 
+    }
+
+    public function showRegistered(string $id){
+
+        $registered = Registration::where('companyid', $id)->get();
+
+        // dd($registered);
+
+        return view('admin.showRegistered', [
+            'registered' => $registered,
+        ]);
     }
 }
