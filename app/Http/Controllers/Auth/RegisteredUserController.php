@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Student;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
@@ -33,6 +34,10 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'deptno' => ['required'],
+            'department' => ['required'],
+            'cgpa' => ['required']
+
         ]);
 
         $user = User::create([
@@ -44,6 +49,21 @@ class RegisteredUserController extends Controller
         event(new Registered($user));
 
         Auth::login($user);
+        
+
+        //custom part
+        //create a student record alongside user
+
+        Student::create([
+            'name' => $user->name,
+            'deptno' => $request->deptno,
+            'department' => $request->department,
+            'cgpa' => $request -> cgpa,
+
+            'userid' => $user->id,
+        ]);
+
+
 
         return redirect(route('dashboard', absolute: false));
     }

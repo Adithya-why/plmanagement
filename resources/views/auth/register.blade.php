@@ -39,6 +39,46 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
+
+        
+
+
+
+
+
+        <!-- dept no -->
+        <div class="mt-4">
+            <x-input-label for="deptno" :value="__('Dept-no')" />
+            <x-text-input id="deptno" class="block mt-1 w-full" type="text" name="deptno" :value="old('deptno')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('deptno')" class="mt-2" />
+        </div>
+
+
+        <!-- department -->
+        <div class="mt-4">
+            <x-input-label for="department" :value="__('Department')" />
+            <x-text-input id="department" class="block mt-1 w-full" type="text" name="department" :value="old('department')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('department')" class="mt-2" />
+        </div>
+
+
+        <!-- CGPA -->
+        <div class="mt-4">
+            <x-input-label for="cgpa" :value="__('Current CGPA')" />
+            <x-text-input id="cgpa" class="block mt-1 w-full" type="text" name="cgpa" :value="old('cgpa')" required autocomplete="username" />
+            <x-input-error :messages="$errors->get('cgpa')" class="mt-2" />
+        </div>
+
+
+
+
+
+
+
+
+
+
+
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
