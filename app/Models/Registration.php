@@ -11,5 +11,7 @@ class Registration extends Model
 
     protected $table = 'registrations';
 
+    protected $fillable = ['companyid', 'studentid'];
+
     
 }

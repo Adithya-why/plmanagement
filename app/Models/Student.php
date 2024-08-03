@@ -18,5 +18,6 @@ class Student extends Model
         'name',
         'department',
         'cgpa',
+        'userid'
     ];
 }
