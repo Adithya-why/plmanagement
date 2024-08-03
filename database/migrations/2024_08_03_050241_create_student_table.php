@@ -19,6 +19,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('deptno');
+            $table->string('name');
             $table->string('department');
             $table->decimal('cgpa', 4, 2);
             $table->unsignedBigInteger('userid');
