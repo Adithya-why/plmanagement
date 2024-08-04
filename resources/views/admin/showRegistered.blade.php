@@ -5,12 +5,15 @@
 
     @if (!$registeredStudents->isEmpty())
         
-        <ul class="flex gap-4 p-4">
+        <ul class="flex gap-4 p-4 flex-col">
             @foreach ($registeredStudents as $student)
-                <li>{{ $student->studentid }}</li>
-                <li>{{ $student->deptno }}</li>
-                <li>{{ $student->department }}</li>
-                <li>{{ $student->cgpa }}</li>
+                <div class="flex gap-5">
+                    <li>{{ $student->studentid }}</li>
+                    <li>{{ $student->deptno }}</li>
+                    <li>{{ $student->name}}</li>
+                    <li>{{ $student->department }}</li>
+                    <li>{{ $student->cgpa }}</li>
+                </div>
             @endforeach
         </ul>
 

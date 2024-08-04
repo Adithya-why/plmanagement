@@ -41,7 +41,30 @@
     </div>
 
 
+
+
     {{-- to view all registrations by the student --}}
+
+
+    <div>
+
+        <h1>Reigstered Drives</h1>
+
+
+        <ul class="p-5 flex flex-row items-center gap-10">
+
+            @foreach ($registered as $reg)
+
+                <li class=" bg-cyan-800 w-1/3 h-1/2 text-center">
+                    <div class="text-2xl">{{$reg->name}}</div>
+                    <div>{{$reg->position}}</div>
+                </li>
+
+            @endforeach
+
+        </ul>
+
+    </div>
 
 
 

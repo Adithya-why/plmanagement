@@ -50,7 +50,10 @@ Route::get('admin/registered/{id}', [placementController::class, 'showRegistered
 //to view the student dashboard
 Route::get('student/dashboard', [studentController::class, 'showCompanies']) -> middleware('auth') -> name('student.dashbaord');
 
-Route::post('student/register/', [studentController::class, 'studentRegister']) -> middleware('auth')  -> name('student.register');
+
+
+//to register for a company
+Route::post('student/register', [studentController::class, 'studentRegister']) -> middleware('auth')  -> name('student.register');
 
 
 
