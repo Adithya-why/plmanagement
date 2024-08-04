@@ -3,6 +3,7 @@
 use App\Http\Controllers\placementController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\studentController;
+use App\Http\Middleware\isAdmin;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,24 +23,29 @@ Route::middleware('auth')->group(function () {
 
 
 //routes regarding placement admin
+//they all use the auth and isAdmin middleware
+//is admin is used to check wehether useris an admin and allowed in admin route
+//if not redirected to student parts
 
-//route to view the admin dashboard
-Route::get('/admin/dashboard', [ placementController::class, 'showDashBoard'])->middleware('auth') -> name('admin.dashboard');
+Route::middleware(['auth', isAdmin::class]) -> group(function(){
 
-
-//route to show new company form
-Route::get('admin/newcompany', [placementController::class, 'showNewForm'])->middleware('auth')->name('admin.newcompany');
-
-
-//route to get data from newcompanyForm and store it
-Route::post('admin/newcompany', [placementController::class, 'storeNewCompany']) -> middleware('auth') -> name('admin.newcompanyStore');
+    //route to view the admin dashboard
+    Route::get('/admin/dashboard', [ placementController::class, 'showDashBoard']) -> name('admin.dashboard');
 
 
-//route to get all people registered for a given company id
-Route::get('admin/registered/{id}', [placementController::class, 'showRegistered']) -> middleware('auth') -> name('admin.showRegistered');
+    //route to show new company form
+    Route::get('/admin/newcompany', [placementController::class, 'showNewForm']) -> name('admin.newcompany');
 
 
+    //route to get data from newcompanyForm and store it
+    Route::post('/admin/newcompany', [placementController::class, 'storeNewCompany']) -> name('admin.newcompanyStore');
 
+
+    //route to get all people registered for a given company id
+    Route::get('/admin/registered/{id}', [placementController::class, 'showRegistered']) -> name('admin.showRegistered');
+
+
+});
 
 
 

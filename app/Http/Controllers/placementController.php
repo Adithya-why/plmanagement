@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\isAdmin;
 use App\Models\Company;
 use App\Models\Registration;
 use App\Models\Student;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\DB;
 
 class placementController extends Controller
 {
+
+
+    
 
     //to show admin dashboard
     //list of all companies available
