@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\placementController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\studentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -36,6 +37,20 @@ Route::post('admin/newcompany', [placementController::class, 'storeNewCompany'])
 
 //route to get all people registered for a given company id
 Route::get('admin/registered/{id}', [placementController::class, 'showRegistered']) -> middleware('auth') -> name('admin.showRegistered');
+
+
+
+
+
+
+
+
+//routes in the student side of the application
+
+//to view the student dashboard
+Route::get('student/dashboard', [studentController::class, 'showCompanies']) -> middleware('auth') -> name('student.dashbaord');
+
+Route::post('student/register/', [studentController::class, 'studentRegister']) -> middleware('auth')  -> name('student.register');
 
 
 
